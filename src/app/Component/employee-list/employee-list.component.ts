@@ -13,7 +13,7 @@ export class EmployeeListComponent {
 
   public employees:Array<Employee>=[];
   ngOnInit(): void {
-    this.employeeService.getEmployees().subscribe((data:Array<Employee>)=>{
+    this.employeeService.get().subscribe((data:Array<Employee>)=>{
       this.employees=data;
     })
   }

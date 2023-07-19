@@ -7,4 +7,5 @@ export class FilterService {
 
   constructor() { }
   public filterText:string="";
+  public filterDepartmentID:number=0;
 }

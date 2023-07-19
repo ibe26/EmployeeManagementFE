@@ -1,7 +1,7 @@
 import { Department } from "./Department"
 import { DeptManager } from "./DepartmentManager"
 
-export interface Employee extends EmployeeDTO{
+export interface Employee{
     empID: number,
     firstName: string,
     lastName: string,
@@ -14,5 +14,5 @@ export interface EmployeeDTO{
     firstName: string,
     lastName: string,
     email: string,
-    departmentMenagerID:number,
+    departmentID:number,
 }

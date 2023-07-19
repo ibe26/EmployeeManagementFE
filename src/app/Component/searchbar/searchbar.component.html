@@ -1,4 +1,4 @@
-<mat-form-field class="example-form-field">
+<mat-form-field >
     <mat-label>Search Employee</mat-label>
     <input matInput type="text" [(ngModel)]="filterService.filterText">
     <button *ngIf="filterService.filterText" matSuffix mat-icon-button aria-label="Clear" (click)="filterService.filterText=''">

@@ -1,7 +1,13 @@
 <div class="row">
-        <div *ngFor="let employee of employees" class="shadow-lg col-sm-4 p-3">
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+    <app-filter-by-manager class="col-3"></app-filter-by-manager>
+    <app-searchbar class="col-3"></app-searchbar>
+
+</div>
+<div class="row">
+        <div *ngFor="let employee of employees|searchBarFilter:filterService.filterText
+                                              |filterDepartment:filterService.filterDepartmentID" class="shadow-lg col-sm-4 p-3">
              <app-employee [employee]="employee"></app-employee>
     </div>
 </div>
-
-{{this.filterService.filterText}}
