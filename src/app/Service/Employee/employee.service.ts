@@ -21,9 +21,9 @@ export class EmployeeService {
     return this.httpClient.post<Employee>(API.domainUrl+"/employee/post",employeeDTO);
   }
   public delete(id:number):Observable<HttpStatusCode>{
-    return this.httpClient.delete<HttpStatusCode>(API.domainUrl+`employee/delete/${id}`);
+    return this.httpClient.delete<HttpStatusCode>(API.domainUrl+`/employee/delete/${id}`);
   }
   public put(employeeDTO:EmployeeDTO,id:number):Observable<HttpStatusCode>{
-    return this.httpClient.put<HttpStatusCode>(API.domainUrl+`employee/put/${id}`,employeeDTO);
+    return this.httpClient.put<HttpStatusCode>(API.domainUrl+`/employee/put/${id}`,employeeDTO);
   }
 }

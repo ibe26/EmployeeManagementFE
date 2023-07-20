@@ -1,8 +1,8 @@
 <mat-form-field>
   <mat-label>Select Department</mat-label>
-  <mat-select (selectionChange)="onValueChange($event)">
-    <mat-option>None</mat-option>
-    <mat-option *ngFor="let department of departments" [value]="department.departmentID">
+  <mat-select [value]="defaultValue" (selectionChange)="onDepartmentChange($event)">
+    <mat-option>Clear</mat-option>
+    <mat-option  *ngFor="let department of departments$|async" [value]="department.departmentID">
       {{department.departmentName}}
     </mat-option>
   </mat-select>

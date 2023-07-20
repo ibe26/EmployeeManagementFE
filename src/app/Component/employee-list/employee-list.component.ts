@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Employee } from 'src/app/Interface/Employee';
 import { EmployeeService } from 'src/app/Service/Employee/employee.service';
 import { FilterService } from 'src/app/Service/Filter/filter-service.service';
@@ -11,10 +12,11 @@ import { FilterService } from 'src/app/Service/Filter/filter-service.service';
 export class EmployeeListComponent {
   constructor(private employeeService:EmployeeService, public filterService:FilterService){}
 
-  public employees:Array<Employee>=[];
+  public employees$:Observable<Array<Employee>>=this.employeeService.get();
   ngOnInit(): void {
-    this.employeeService.get().subscribe((data:Array<Employee>)=>{
-      this.employees=data;
-    })
+    
+  }
+  public onDepartmentChange($event:number){
+    this.filterService.filterDepartmentID=$event;
   }
 }

@@ -1,1 +1,49 @@
-<p>employee-edit works!</p>
+<form
+  *ngIf="employee$ | async; else loadingTemplate"
+  [formGroup]="editEmployeeForm!"
+  (ngSubmit)="onSubmit()"
+>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        type="text"
+        class="inputHeight"
+        matInput
+        formControlName="firstName"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input
+        type="text"
+        class="inputHeight"
+        matInput
+        formControlName="lastName"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>E-Mail</mat-label>
+      <input
+        class="inputHeight"
+        matInput
+        formControlName="email"
+      />
+    </mat-form-field>
+    <div>
+        <app-filter-by-manager (DepartmentValue)="onDepartmentChange($event)" [defaultValue]="(employee$|async)?.department?.departmentID"></app-filter-by-manager>
+    </div>
+  </div>
+  <div>
+    <button class="mt-1" type="submit" mat-raised-button color="primary">
+      Confirm Changes
+    </button>
+  </div>
+</form>
+
+<ng-template #loadingTemplate><p>loading...</p></ng-template>

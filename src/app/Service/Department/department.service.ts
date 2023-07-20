@@ -22,9 +22,9 @@ export class DepartmentService {
     return this.httpClient.post<Department>(API.domainUrl+"/department/post",DepartmentDTO);
   }
   public delete(id:number):Observable<HttpStatusCode>{
-    return this.httpClient.delete<HttpStatusCode>(API.domainUrl+`department/delete/${id}`);
+    return this.httpClient.delete<HttpStatusCode>(API.domainUrl+`/department/delete/${id}`);
   }
   public put(DepartmentDTO:DepartmentDTO,id:number):Observable<HttpStatusCode>{
-    return this.httpClient.put<HttpStatusCode>(API.domainUrl+`department/put/${id}`,DepartmentDTO);
+    return this.httpClient.put<HttpStatusCode>(API.domainUrl+`/department/put/${id}`,DepartmentDTO);
   }
 }
