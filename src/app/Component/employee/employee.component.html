@@ -12,8 +12,8 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="btn-group" role="group">
-        <button routerLink="edit-employee/{{employee.empID}}" routerLinkActive="router-link-active"  class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+        <button routerLink="employee-edit/{{employee.empID}}" routerLinkActive="router-link-active"  class="btn btn-primary">Edit</button>
+        <button (click)="onDeleteClick()" class="btn btn-danger">Delete</button>
       </div>
       
     </mat-card-actions>

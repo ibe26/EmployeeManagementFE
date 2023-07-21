@@ -1,7 +1,9 @@
 <div class="row">
+    <div class="col-3">
+        <button routerLink="/employee-add" class="btn btn-outline-primary"> <i class="fa-solid fa-plus"></i> Add Employee</button>
+    </div>
     <div class="col-3"></div>
-    <div class="col-3"></div>
-    <app-filter-by-manager (DepartmentValue)="onDepartmentChange($event)" class="col-3"></app-filter-by-manager>
+    <app-menager-dropdown (DepartmentChange)="onDepartmentChange($event)" class="col-3"></app-menager-dropdown>
     <app-searchbar class="col-3"></app-searchbar>
 
 </div>

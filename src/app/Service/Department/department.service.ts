@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpStatusCode } from '@angular/common/http';
 import { Department,DepartmentDTO } from 'src/app/Interface/Department';
 import { API } from '../API';
 import { Observable } from 'rxjs/internal/Observable';
@@ -21,10 +21,10 @@ export class DepartmentService {
   public post(DepartmentDTO:DepartmentDTO):Observable<Department>{
     return this.httpClient.post<Department>(API.domainUrl+"/department/post",DepartmentDTO);
   }
-  public delete(id:number):Observable<HttpStatusCode>{
-    return this.httpClient.delete<HttpStatusCode>(API.domainUrl+`/department/delete/${id}`);
+  public delete(id:number):Observable<HttpResponse<HttpStatusCode>>{
+    return this.httpClient.delete<HttpStatusCode>(API.domainUrl+`/department/delete/${id}`,{observe: 'response'});
   }
-  public put(DepartmentDTO:DepartmentDTO,id:number):Observable<HttpStatusCode>{
-    return this.httpClient.put<HttpStatusCode>(API.domainUrl+`/department/put/${id}`,DepartmentDTO);
+  public put(DepartmentDTO:DepartmentDTO,id:number):Observable<HttpResponse<HttpStatusCode>>{
+    return this.httpClient.put<HttpStatusCode>(API.domainUrl+`/department/put/${id}`,DepartmentDTO,{observe: 'response'});
   }
 }

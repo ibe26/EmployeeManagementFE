@@ -9,15 +9,15 @@ import { FilterService } from 'src/app/Service/Filter/filter-service.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-filter-by-manager',
-  templateUrl: './filter-by-manager.component.html',
-  styleUrls: ['./filter-by-manager.component.css'],
+  selector: 'app-menager-dropdown',
+  templateUrl: './manager-dropdown.component.html',
+  styleUrls: ['./manager-dropdown.component.css'],
   standalone:true,
   imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, NgIf, NgFor,CommonModule],
 })
 export class FilterByManagerComponent implements OnInit {
   @Input() defaultValue!:number|undefined;
-  @Output() DepartmentValue = new EventEmitter<number>();
+  @Output() DepartmentChange = new EventEmitter<number>();
 
   constructor(private departmentService:DepartmentService,public filterService:FilterService){}
   
@@ -28,7 +28,7 @@ export class FilterByManagerComponent implements OnInit {
   }
   
   public onDepartmentChange(event:any){
-    this.DepartmentValue.emit(event.value)
+    this.DepartmentChange.emit(event.value)
   }
 
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { API } from '../API';
 import { Observable } from 'rxjs/internal/Observable';
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpResponse, HttpStatusCode } from '@angular/common/http';
 import { Employee, EmployeeDTO } from 'src/app/Interface/Employee';
 
 @Injectable({
@@ -20,10 +20,10 @@ export class EmployeeService {
   public post(employeeDTO:EmployeeDTO):Observable<Employee>{
     return this.httpClient.post<Employee>(API.domainUrl+"/employee/post",employeeDTO);
   }
-  public delete(id:number):Observable<HttpStatusCode>{
-    return this.httpClient.delete<HttpStatusCode>(API.domainUrl+`/employee/delete/${id}`);
+  public delete(id:number):Observable<HttpResponse<HttpStatusCode>>{
+    return this.httpClient.delete<HttpStatusCode>(API.domainUrl+`/employee/delete/${id}`,{observe: 'response'});
   }
-  public put(employeeDTO:EmployeeDTO,id:number):Observable<HttpStatusCode>{
-    return this.httpClient.put<HttpStatusCode>(API.domainUrl+`/employee/put/${id}`,employeeDTO);
+  public put(employeeDTO:EmployeeDTO,id:number):Observable<HttpResponse<HttpStatusCode>>{
+    return this.httpClient.put<HttpStatusCode>(API.domainUrl+`/employee/put/${id}`,employeeDTO,{observe: 'response'});
   }
 }

@@ -11,15 +11,17 @@ import { EmployeeListComponent } from './Component/employee-list/employee-list.c
 import { NavbarComponent } from './Component/navbar/navbar.component';
 import { EmployeeEditComponent } from './Component/employee-edit/employee-edit.component';
 import { SearchbarComponent } from "./Component/searchbar/searchbar.component";
+import { AddEmployeeComponent } from './Component/add-employee/add-employee.component';
 
 import { SearchBarFilterPipe } from './Pipe/search-bar-filter.pipe';
 import { FilterDepartmentPipe } from './Pipe/filter-department.pipe';
 import { Routes,RouterModule } from '@angular/router';
-import { FilterByManagerComponent } from "./Component/filter-by-manager/filter-by-manager.component";
+import { FilterByManagerComponent } from "./Component/manager-dropdown/manager-dropdown.component";
 
 const routes:Routes=[
 {path:'',component:EmployeeListComponent},
-{path:'edit-employee/:id',component:EmployeeEditComponent}
+{path:'employee-edit/:id',component:EmployeeEditComponent},
+{path:'employee-add',component:AddEmployeeComponent}
 ];
 
 @NgModule({

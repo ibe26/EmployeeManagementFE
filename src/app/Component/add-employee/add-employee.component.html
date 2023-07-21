@@ -1,5 +1,4 @@
 <form
-  *ngIf="employee$|async"
   [formGroup]="EmployeeForm!"
   (ngSubmit)="onSubmit()"
 >
@@ -36,12 +35,12 @@
       />
     </mat-form-field>
     <div>
-        <app-menager-dropdown (DepartmentChange)="onDepartmentChange($event)" [defaultValue]="(employee$|async)?.department?.departmentID"></app-menager-dropdown>
+        <app-menager-dropdown (DepartmentChange)="onDepartmentChange($event)"></app-menager-dropdown>
     </div>
   </div>
   <div>
     <button class="mt-1" type="submit" mat-raised-button color="primary">
-      Confirm Changes
+      Add Employee
     </button>
   </div>
 </form>

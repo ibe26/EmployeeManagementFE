@@ -13,9 +13,7 @@ export class EmployeeListComponent {
   constructor(private employeeService:EmployeeService, public filterService:FilterService){}
 
   public employees$:Observable<Array<Employee>>=this.employeeService.get();
-  ngOnInit(): void {
-    
-  }
+
   public onDepartmentChange($event:number){
     this.filterService.filterDepartmentID=$event;
   }
