@@ -35,9 +35,13 @@
       />
     </mat-form-field>
     <div>
-        <app-menager-dropdown (DepartmentChange)="onDepartmentChange($event)"></app-menager-dropdown>
+        <app-department-dropdown (DepartmentChange)="onDepartmentChange($event)"></app-department-dropdown>
     </div>
-  </div>
+    <app-dept-manager-dropdown
+        (ManagerChange)="onManagerChange($event)"
+        [departmentID]="EmployeeForm.value['departmentID']"
+      ></app-dept-manager-dropdown>
+    </div>
   <div>
     <button class="mt-1" type="submit" mat-raised-button color="primary">
       Add Employee

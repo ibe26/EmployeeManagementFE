@@ -1,0 +1,10 @@
+<mat-form-field>
+    <mat-label>Select Department Manager</mat-label>
+    <mat-select [disabled]="departmentID==undefined" [value]="defaultValue" (selectionChange)="onManagerChange($event)">
+      <mat-option>Clear</mat-option>
+      <mat-option  *ngFor="let manager of managers$|async|filterManagers:departmentID" [value]="manager.deptManagerID">
+        {{manager.firstName+' '+manager.lastName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  

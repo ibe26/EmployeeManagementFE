@@ -16,7 +16,9 @@ import { AddEmployeeComponent } from './Component/add-employee/add-employee.comp
 import { SearchBarFilterPipe } from './Pipe/search-bar-filter.pipe';
 import { FilterDepartmentPipe } from './Pipe/filter-department.pipe';
 import { Routes,RouterModule } from '@angular/router';
-import { FilterByManagerComponent } from "./Component/manager-dropdown/manager-dropdown.component";
+import { FilterByDepartmentComponent } from "./Component/department-dropdown/department-dropdown.component";
+import { DeptManagerDropdownComponent } from './Component/dept-manager-dropdown/dept-manager-dropdown.component';
+import { FilterManagersPipe } from './Pipe/filter-managers.pipe';
 
 const routes:Routes=[
 {path:'',component:EmployeeListComponent},
@@ -31,6 +33,7 @@ const routes:Routes=[
         NavbarComponent,
         SearchBarFilterPipe,
         FilterDepartmentPipe,
+        FilterDepartmentPipe,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -43,7 +46,8 @@ const routes:Routes=[
         EmployeeComponent,
         SearchbarComponent,
         RouterModule.forRoot(routes),
-        FilterByManagerComponent
+        FilterByDepartmentComponent,
+        DeptManagerDropdownComponent
     ]
 })
 export class AppModule { }

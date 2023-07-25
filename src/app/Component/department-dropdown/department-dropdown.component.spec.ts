@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterByManagerComponent } from './manager-dropdown.component';
+import { FilterByManagerComponent } from './department-dropdown.component';
 
 describe('FilterByManagerComponent', () => {
   let component: FilterByManagerComponent;

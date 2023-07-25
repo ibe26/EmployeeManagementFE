@@ -15,4 +15,5 @@ export interface EmployeeDTO{
     lastName: string,
     email: string,
     departmentID:number,
+    deptManagerID:number
 }

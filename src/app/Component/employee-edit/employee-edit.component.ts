@@ -9,16 +9,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
-import { FilterByManagerComponent } from '../manager-dropdown/manager-dropdown.component';
+import { FilterByDepartmentComponent } from '../department-dropdown/department-dropdown.component';
+import { DeptManagerDropdownComponent } from '../dept-manager-dropdown/dept-manager-dropdown.component';
 
 @Component({
   selector: 'app-employee-edit',
   templateUrl: './employee-edit.component.html',
   styleUrls: ['./employee-edit.component.css'],
   standalone: true,
-  imports: [FormsModule, MatInputModule, MatButtonModule, ReactiveFormsModule, CommonModule, MatFormFieldModule, FilterByManagerComponent]
+  imports: [FormsModule, MatInputModule, MatButtonModule, ReactiveFormsModule, CommonModule, MatFormFieldModule, FilterByDepartmentComponent,DeptManagerDropdownComponent]
 })
 export class EmployeeEditComponent implements OnInit {
+
   constructor(private formBuilder: FormBuilder
     , private employeeService: EmployeeService
     , private activatedRoute: ActivatedRoute
@@ -35,7 +37,8 @@ export class EmployeeEditComponent implements OnInit {
         firstName: [employee.firstName, [Validators.required]],
         lastName: [employee.lastName, [Validators.required]],
         email: [employee.email, [Validators.required, Validators.email]],
-        departmentID: [employee.department.departmentID, Validators.required]
+        departmentID: [employee.department.departmentID, [Validators.required,Validators.min(1)]],
+        deptManagerID:[employee.deptManager.deptManagerID,[Validators.required,Validators.min(1)]]
       });
     })
   }
@@ -45,7 +48,8 @@ export class EmployeeEditComponent implements OnInit {
     if (!this.EmployeeForm.valid) {
       alertify.error("Please provide all the informations needed.");
       return;
-    }
+    
+  }
 
     this.employeeService.put(this.EmployeeForm.value, this.employeeID).subscribe((httpResponse) => {
       if (httpResponse.status === 200) {
@@ -60,4 +64,7 @@ export class EmployeeEditComponent implements OnInit {
     this.EmployeeForm.controls['departmentID'].setValue($event);
   }
 
+  public onManagerChange($event: number) {
+    this.EmployeeForm.controls['deptManagerID'].setValue($event);
+    }
 }

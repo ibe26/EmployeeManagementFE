@@ -9,13 +9,13 @@ import { FilterService } from 'src/app/Service/Filter/filter-service.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-menager-dropdown',
-  templateUrl: './manager-dropdown.component.html',
-  styleUrls: ['./manager-dropdown.component.css'],
+  selector: 'app-department-dropdown',
+  templateUrl: './department-dropdown.component.html',
+  styleUrls: ['./department-dropdown.component.css'],
   standalone:true,
   imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, NgIf, NgFor,CommonModule],
 })
-export class FilterByManagerComponent implements OnInit {
+export class FilterByDepartmentComponent implements OnInit {
   @Input() defaultValue!:number|undefined;
   @Output() DepartmentChange = new EventEmitter<number>();
 
@@ -24,7 +24,6 @@ export class FilterByManagerComponent implements OnInit {
   public departments$:Observable<Array<Department>>=this.departmentService.get();
 
   ngOnInit(): void {
-
   }
   
   public onDepartmentChange(event:any){

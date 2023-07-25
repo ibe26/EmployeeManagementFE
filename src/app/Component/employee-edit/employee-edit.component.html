@@ -1,5 +1,5 @@
 <form
-  *ngIf="employee$|async"
+  *ngIf="employee$ | async"
   [formGroup]="EmployeeForm!"
   (ngSubmit)="onSubmit()"
 >
@@ -29,14 +29,20 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>E-Mail</mat-label>
-      <input
-        class="inputHeight"
-        matInput
-        formControlName="email"
-      />
+      <input class="inputHeight" matInput formControlName="email" />
     </mat-form-field>
     <div>
-        <app-menager-dropdown (DepartmentChange)="onDepartmentChange($event)" [defaultValue]="(employee$|async)?.department?.departmentID"></app-menager-dropdown>
+      <app-department-dropdown
+        (DepartmentChange)="onDepartmentChange($event)"
+        [defaultValue]="(employee$ | async)?.department?.departmentID"
+      ></app-department-dropdown>
+    </div>
+    <div>
+      <app-dept-manager-dropdown
+        (ManagerChange)="onManagerChange($event)"
+        [defaultValue]="(employee$ | async)?.deptManager?.deptManagerID"
+        [departmentID]="EmployeeForm.value['departmentID']"
+      ></app-dept-manager-dropdown>
     </div>
   </div>
   <div>
@@ -45,4 +51,3 @@
     </button>
   </div>
 </form>
-
