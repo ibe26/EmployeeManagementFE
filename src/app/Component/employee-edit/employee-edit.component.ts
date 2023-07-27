@@ -48,7 +48,6 @@ export class EmployeeEditComponent implements OnInit {
     if (!this.EmployeeForm.valid) {
       alertify.error("Please provide all the informations needed.");
       return;
-    
   }
 
     this.employeeService.put(this.EmployeeForm.value, this.employeeID).subscribe((httpResponse) => {

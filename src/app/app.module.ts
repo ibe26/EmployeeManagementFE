@@ -19,11 +19,14 @@ import { Routes,RouterModule } from '@angular/router';
 import { FilterByDepartmentComponent } from "./Component/department-dropdown/department-dropdown.component";
 import { DeptManagerDropdownComponent } from './Component/dept-manager-dropdown/dept-manager-dropdown.component';
 import { FilterManagersPipe } from './Pipe/filter-managers.pipe';
+import { LoginComponent } from './Component/login/login.component';
+import { RegisterComponent } from './Component/register/register.component';
 
 const routes:Routes=[
 {path:'',component:EmployeeListComponent},
 {path:'employee-edit/:id',component:EmployeeEditComponent},
-{path:'employee-add',component:AddEmployeeComponent}
+{path:'employee-add',component:AddEmployeeComponent},
+{path:'login',component:LoginComponent},
 ];
 
 @NgModule({
@@ -47,7 +50,10 @@ const routes:Routes=[
         SearchbarComponent,
         RouterModule.forRoot(routes),
         FilterByDepartmentComponent,
-        DeptManagerDropdownComponent
+        DeptManagerDropdownComponent,
+        LoginComponent,
+        RegisterComponent,
+
     ]
 })
 export class AppModule { }
