@@ -21,24 +21,29 @@ import { DeptManagerDropdownComponent } from './Component/dept-manager-dropdown/
 import { FilterManagersPipe } from './Pipe/filter-managers.pipe';
 import { LoginComponent } from './Component/login/login.component';
 import { RegisterComponent } from './Component/register/register.component';
+import { AuthGuardTokenService } from './Service/AuthGuard/auth-guard-token.service';
+import { ErrorPageComponent } from './Component/error-page/error-page.component';
 
 const routes:Routes=[
-{path:'',component:EmployeeListComponent},
+{path:'employee-list',component:EmployeeListComponent,canActivate:[AuthGuardTokenService]},
 {path:'employee-edit/:id',component:EmployeeEditComponent},
 {path:'employee-add',component:AddEmployeeComponent},
 {path:'login',component:LoginComponent},
+{path:'register',component:RegisterComponent},
+{path:'**',component:ErrorPageComponent},
+
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
         EmployeeListComponent,
-        NavbarComponent,
         SearchBarFilterPipe,
         FilterDepartmentPipe,
         FilterDepartmentPipe,
+        ErrorPageComponent
     ],
-    providers: [],
+    providers: [AuthGuardTokenService],
     bootstrap: [AppComponent],
     exports: [RouterModule],
     imports: [
@@ -53,7 +58,7 @@ const routes:Routes=[
         DeptManagerDropdownComponent,
         LoginComponent,
         RegisterComponent,
-
+        NavbarComponent,
     ]
 })
 export class AppModule { }

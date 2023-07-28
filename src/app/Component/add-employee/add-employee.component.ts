@@ -46,7 +46,7 @@ export class AddEmployeeComponent {
 
     this.employeeService.post(this.EmployeeForm.value).subscribe(()=>{
       console.log("hi")
-      this.router.navigate(['']);
+      this.router.navigate(['/employee-list']);
     });
   }
   public onDepartmentChange($event: number) {

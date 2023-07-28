@@ -9,8 +9,10 @@ import { Employee, EmployeeDTO } from 'src/app/Interface/Employee';
 })
 export class EmployeeService {
   private readonly token=localStorage.getItem("token");
-  constructor(private httpClient:HttpClient){}
-  headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.token });
+  constructor(private httpClient:HttpClient){
+    this.headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.token });
+  }
+  headers!:HttpHeaders 
 
   public get():Observable<Array<Employee>>{
     return this.httpClient.get<Array<Employee>>(API.domainUrl+"/employee/getAll",{headers:this.headers});

@@ -18,36 +18,27 @@ import alertify from 'alertifyjs';
 
 })
 export class LoginComponent {
-  constructor(private userService:UserService
-              ,private formBuilder: FormBuilder
-              , private activatedRoute: ActivatedRoute
-              , private router: Router){}
-  
-  private loginDTO!:LoginDTO;
+  constructor(private userService: UserService
+    , private formBuilder: FormBuilder
+    , private activatedRoute: ActivatedRoute
+    , private router: Router) { }
 
-  public UserForm: FormGroup=this.formBuilder.group({
-    login:['',[Validators.required]],
-    password:['',[Validators.required]]
+  private loginDTO!: LoginDTO;
+
+  public UserForm: FormGroup = this.formBuilder.group({
+    login: ['', [Validators.required]],
+    password: ['', [Validators.required]]
   });
 
-  public onSubmit(){
-    if(this.UserForm.valid)
-    {
-      this.userService.login(this.UserForm.value).subscribe(data=>{
-        if(localStorage.getItem("token")){
-          localStorage.removeItem("token");
-          localStorage.setItem("token",data.token);
-          console.log("no token")
-        }
-        else localStorage.setItem("token",data.token);
-        console.log("yes token")
-  
-        this.router.navigate(['']);
-        
+  public onSubmit() {
+    if (this.UserForm.valid) {
+      this.userService.login(this.UserForm.value).subscribe(data => {
+        localStorage.setItem("token", data.token);
+        this.router.navigate(['employee-list']);
       })
     }
     else alertify.error("Please provide needed informations.");
 
-   
+
   }
 }

@@ -7,7 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/Service/User/user.service';
 import alertify from 'alertifyjs';
-import { RegisterDTO } from 'src/app/Interface/Regsiter';
 
 @Component({
   selector: 'app-register',
@@ -23,8 +22,6 @@ export class RegisterComponent {
               , private activatedRoute: ActivatedRoute
               , private router: Router){}
   
-  private registernDTO!:RegisterDTO;
-
   public RegisterForm: FormGroup=this.formBuilder.group({
     login:['',[Validators.required]],
     firstName: ['', [Validators.required]],
@@ -35,7 +32,12 @@ export class RegisterComponent {
   public onSubmit(){
     if(this.RegisterForm.valid)
     {
-      
+      this.userService.register(this.RegisterForm.value).subscribe(data=>{
+        if(data.ok){
+          alertify.success("Successfully registered!");
+          this.router.navigate(['/login']);
+        }
+      })
     }
     else alertify.error("Please provide needed informations.");
 

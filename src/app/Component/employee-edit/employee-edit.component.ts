@@ -52,7 +52,7 @@ export class EmployeeEditComponent implements OnInit {
 
     this.employeeService.put(this.EmployeeForm.value, this.employeeID).subscribe((httpResponse) => {
       if (httpResponse.status === 200) {
-        this.router.navigate(['/'])
+        this.router.navigate(['/employee-list'])
         return;
       }
       alertify.error(httpResponse.status)
