@@ -9,7 +9,7 @@ export class FilterManagersPipe implements PipeTransform {
 
   transform(value: Array<DeptManager>|null,departmentId:number|undefined): Array<DeptManager>|null {
     
-    return value!?.filter(manager=>manager.department.departmentID===departmentId)
+    return value!?.filter(manager=>manager.department?.departmentID===departmentId)
   }
 
 

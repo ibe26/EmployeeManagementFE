@@ -11,6 +11,9 @@ import { FilterService } from 'src/app/Service/Filter/filter-service.service';
 })
 export class EmployeeListComponent {
   constructor(private employeeService:EmployeeService, public filterService:FilterService){}
+  ngOnInit():void{
+    this.filterService.filterDepartmentID=0;
+  }
 
   public employees$:Observable<Array<Employee>>=this.employeeService.get();
 

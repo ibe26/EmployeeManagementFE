@@ -23,9 +23,6 @@ export class DeptManagerDropdownComponent {
 
   constructor(private deptManagerService: DeptManagerService
     , public filterService: FilterService) { }
-    ngOnInit(){
-      console.log(this.departmentID)
-    }
 
   public managers$: Observable<Array<DeptManager>> = this.deptManagerService.get();
 

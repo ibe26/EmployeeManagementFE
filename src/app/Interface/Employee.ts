@@ -6,8 +6,8 @@ export interface Employee{
     firstName: string,
     lastName: string,
     email: string,
-    department: Department
-    deptManager: DeptManager
+    department: Department|null
+    deptManager: DeptManager|null
 }
 
 export interface EmployeeDTO{

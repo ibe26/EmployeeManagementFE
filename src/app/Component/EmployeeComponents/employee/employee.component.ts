@@ -13,12 +13,11 @@ import alertify from 'alertifyjs';
   standalone: true,
   imports: [MatCardModule, MatButtonModule, RouterModule],
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeComponent{
   @Input() employee!: Employee;
   constructor(private employeeService: EmployeeService
     , private router: Router) { }
-  ngOnInit(): void {
-  }
+
 
   public onDeleteClick() {
     alertify.confirm(`Are you sure you want to remove ${this.employee.firstName + ' ' + this.employee.lastName}`, () => {

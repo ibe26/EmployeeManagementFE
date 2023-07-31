@@ -9,8 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
-import { FilterByDepartmentComponent } from '../department-dropdown/department-dropdown.component';
-import { DeptManagerDropdownComponent } from '../dept-manager-dropdown/dept-manager-dropdown.component';
+import { FilterByDepartmentComponent } from '../../DepartmentComponents/department-dropdown/department-dropdown.component';
+import { DeptManagerDropdownComponent } from '../../DepartmentManagerComponents/dept-manager-dropdown/dept-manager-dropdown.component';
 
 @Component({
   selector: 'app-employee-edit',
@@ -37,14 +37,13 @@ export class EmployeeEditComponent implements OnInit {
         firstName: [employee.firstName, [Validators.required]],
         lastName: [employee.lastName, [Validators.required]],
         email: [employee.email, [Validators.required, Validators.email]],
-        departmentID: [employee.department.departmentID, [Validators.required,Validators.min(1)]],
-        deptManagerID:[employee.deptManager.deptManagerID,[Validators.required,Validators.min(1)]]
+        departmentID: [employee.department?.departmentID, [Validators.required,Validators.min(1)]],
+        deptManagerID:[employee.deptManager?.deptManagerID,[Validators.required,Validators.min(1)]]
       });
     })
   }
 
   public onSubmit(): void {
-    console.log(this.EmployeeForm.value)
     if (!this.EmployeeForm.valid) {
       alertify.error("Please provide all the informations needed.");
       return;

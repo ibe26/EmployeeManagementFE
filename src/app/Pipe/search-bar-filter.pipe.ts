@@ -7,7 +7,7 @@ import { Employee } from '../Interface/Employee';
 export class SearchBarFilterPipe implements PipeTransform {
 
   transform(value: Array<Employee>|null,filterText:string): Array<Employee>|null {
-    return value!?.filter(emp=>emp.firstName.toLowerCase().includes(filterText.toLowerCase()) || emp.lastName.toLowerCase().includes(filterText));
+    return value!?.filter(emp=>(emp.firstName+emp.lastName).toLowerCase().includes(filterText.toLowerCase().replace(/ /g,'')));
   }
 
 }

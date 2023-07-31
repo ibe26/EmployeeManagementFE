@@ -7,9 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FilterByDepartmentComponent } from '../department-dropdown/department-dropdown.component';
+import { FilterByDepartmentComponent } from '../../DepartmentComponents/department-dropdown/department-dropdown.component';
 import { FilterService } from 'src/app/Service/Filter/filter-service.service';
-import { DeptManagerDropdownComponent } from '../dept-manager-dropdown/dept-manager-dropdown.component';
+import { DeptManagerDropdownComponent } from '../../DepartmentManagerComponents/dept-manager-dropdown/dept-manager-dropdown.component';
 
 @Component({
   selector: 'app-add-employee',

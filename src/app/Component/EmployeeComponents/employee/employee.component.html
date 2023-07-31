@@ -2,12 +2,12 @@
 <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>{{employee.firstName+" "+employee.lastName}}</mat-card-title>
-      <mat-card-subtitle>{{employee.department.departmentName}}</mat-card-subtitle>
+      <mat-card-subtitle>{{(employee.department?.departmentName)||"Department hasn't been assigned yet."}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image style="max-width: 80%; max-height: 80%; margin-left: auto; margin-right: auto; vertical-align: middle; border-radius: 50%;overflow: hidden;;" src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <div class="row">Email: {{employee.email}}</div>
-      <div class="row">Manager: {{employee.deptManager.firstName+" "+employee.deptManager.lastName}}</div>
+      <div class="row">Manager: {{(employee.deptManager!.firstName+" "+employee.deptManager!.lastName)||"Manager hasn't been assigned yet."}}</div>
 
     </mat-card-content>
     <mat-card-actions>

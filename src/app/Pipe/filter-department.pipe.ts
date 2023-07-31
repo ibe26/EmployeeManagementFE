@@ -8,7 +8,7 @@ export class FilterDepartmentPipe implements PipeTransform {
 
   transform(value: Array<Employee>|null,departmentId:number|undefined): Array<Employee>|null {
     
-    return departmentId === undefined || departmentId === 0 ? value : value!.filter(emp=>emp.department.departmentID===departmentId);
+    return departmentId === undefined || departmentId === 0 ? value : value!.filter(emp=>emp.department?.departmentID===departmentId);
   }
 
 }

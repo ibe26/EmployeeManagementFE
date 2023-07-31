@@ -8,5 +8,5 @@ export interface DeptManagerDTO{
     firstName: string,
     lastName: string,
     email: string,
-    department: Department
+    department: Department|null
 }
