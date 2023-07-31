@@ -10,27 +10,31 @@ import { EmployeeComponent } from './Component/EmployeeComponents/employee/emplo
 import { EmployeeListComponent } from './Component/EmployeeComponents/employee-list/employee-list.component';
 import { NavbarComponent } from './Component/GlobalComponents/navbar/navbar.component';
 import { EmployeeEditComponent } from './Component//EmployeeComponents/employee-edit/employee-edit.component';
-import { SearchbarComponent } from "./Component/searchbar/searchbar.component";
-import { AddEmployeeComponent } from './Component/EmployeeComponents/add-employee/add-employee.component';
+import { SearchbarComponent } from "./Component/GlobalComponents/searchbar/searchbar.component";
+import { AddEmployeeComponent } from './Component/EmployeeComponents/employee-add/add-employee.component';
 
 import { SearchBarFilterPipe } from './Pipe/search-bar-filter.pipe';
 import { FilterDepartmentPipe } from './Pipe/filter-department.pipe';
 import { Routes,RouterModule } from '@angular/router';
 import { FilterByDepartmentComponent } from "./Component/DepartmentComponents/department-dropdown/department-dropdown.component";
 import { DeptManagerDropdownComponent } from './Component/DepartmentManagerComponents/dept-manager-dropdown/dept-manager-dropdown.component';
-import { FilterManagersPipe } from './Pipe/filter-managers.pipe';
 import { LoginComponent } from './Component/GlobalComponents/login/login.component';
 import { RegisterComponent } from './Component/GlobalComponents/register/register.component';
 import { AuthGuardTokenService } from './Service/AuthGuard/auth-guard-token.service';
 import { ErrorPageComponent } from './Component/GlobalComponents/error-page/error-page.component';
 import { EmployeeDepartmentNullPipe } from './Pipe/employee-department-null.pipe';
-import { DepartmentManagerListComponent } from './Component/DepartmentManagerComponents/department-manager-list/department-manager-list/department-manager-list.component';
-import { DepartmentManagerComponent } from './Component/DepartmentManagerComponents/department-manager/department-manager/department-manager.component';
+import { DepartmentManagerListComponent } from './Component/DepartmentManagerComponents/department-manager-list/department-manager-list.component';
+import { DepartmentManagerComponent } from './Component/DepartmentManagerComponents/department-manager/department-manager.component';
+import { DepartmentListComponent } from './Component/DepartmentComponents/department-list/department-list.component';
+import { DepartmentAddComponent } from './Component/DepartmentComponents/department-add/department-add.component';
 
 const routes:Routes=[
 {path:'employee-list',component:EmployeeListComponent,canActivate:[AuthGuardTokenService]},
-{path:'employee-edit/:id',component:EmployeeEditComponent},
-{path:'employee-add',component:AddEmployeeComponent},
+{path:'employee-edit/:id',component:EmployeeEditComponent,canActivate:[AuthGuardTokenService]},
+{path:'employee-add',component:AddEmployeeComponent,canActivate:[AuthGuardTokenService]},
+{path:'department-manager-list',component:DepartmentManagerListComponent,canActivate:[AuthGuardTokenService]},
+{path:'department-list',component:DepartmentListComponent,canActivate:[AuthGuardTokenService]},
+{path:'department-add',component:DepartmentAddComponent,canActivate:[AuthGuardTokenService]},
 {path:'login',component:LoginComponent},
 {path:'register',component:RegisterComponent},
 {path:'**',component:ErrorPageComponent},
@@ -47,7 +51,8 @@ const routes:Routes=[
         ErrorPageComponent,
         EmployeeDepartmentNullPipe,
         DepartmentManagerListComponent,
-        DepartmentManagerComponent
+        DepartmentManagerComponent,
+        DepartmentAddComponent
     ],
     providers: [AuthGuardTokenService],
     bootstrap: [AppComponent],
@@ -65,6 +70,8 @@ const routes:Routes=[
         LoginComponent,
         RegisterComponent,
         NavbarComponent,
+        DepartmentListComponent,
+        
     ]
 })
 export class AppModule { }

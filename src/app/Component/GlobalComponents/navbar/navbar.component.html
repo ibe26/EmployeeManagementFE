@@ -15,20 +15,40 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/employee-list" routerLinkActive="active">
+        <a
+          class="nav-link"
+          routerLink="/employee-list"
+          routerLinkActive="active"
+        >
           Employees
         </a>
       </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/department-list"
+          routerLinkActive="active"
+        >
+          Departments
+        </a>
+      </li>
     </ul>
-    
-    <ng-container *ngIf="guard.canActivate(); then ifTokenValid; else ifTokenInvalid"></ng-container >
 
+    <ng-container
+      *ngIf="guard.canActivate(); then ifTokenValid; else ifTokenInvalid"
+    ></ng-container>
   </div>
 </nav>
 
 <ng-template #ifTokenValid>
   <div class="nav-item" style="float: right">
-    <button class="mt-1" type="submit" mat-raised-button color="warn" (click)="onLogOut()">
+    <button
+      class="mt-1"
+      type="submit"
+      mat-raised-button
+      color="warn"
+      (click)="onLogOut()"
+    >
       Log out
     </button>
   </div>
@@ -38,6 +58,8 @@
     <button mat-fab extended color="primary" routerLink="/login">Login</button>
   </div>
   <div class="nav-item" style="float: right">
-    <button class="mt-1" type="submit" mat-raised-button routerLink="/register">Register</button>
+    <button class="mt-1" type="submit" mat-raised-button routerLink="/register">
+      Register
+    </button>
   </div>
 </ng-template>
