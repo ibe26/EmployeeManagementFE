@@ -26,7 +26,6 @@ import { EmployeeDepartmentNullPipe } from './Pipe/employee-department-null.pipe
 import { DepartmentManagerListComponent } from './Component/DepartmentManagerComponents/department-manager-list/department-manager-list.component';
 import { DepartmentManagerComponent } from './Component/DepartmentManagerComponents/department-manager/department-manager.component';
 import { DepartmentListComponent } from './Component/DepartmentComponents/department-list/department-list.component';
-import { DepartmentAddComponent } from './Component/DepartmentComponents/department-add/department-add.component';
 
 const routes:Routes=[
 {path:'employee-list',component:EmployeeListComponent,canActivate:[AuthGuardTokenService]},
@@ -34,7 +33,6 @@ const routes:Routes=[
 {path:'employee-add',component:AddEmployeeComponent,canActivate:[AuthGuardTokenService]},
 {path:'department-manager-list',component:DepartmentManagerListComponent,canActivate:[AuthGuardTokenService]},
 {path:'department-list',component:DepartmentListComponent,canActivate:[AuthGuardTokenService]},
-{path:'department-add',component:DepartmentAddComponent,canActivate:[AuthGuardTokenService]},
 {path:'login',component:LoginComponent},
 {path:'register',component:RegisterComponent},
 {path:'**',component:ErrorPageComponent},
@@ -51,8 +49,6 @@ const routes:Routes=[
         ErrorPageComponent,
         EmployeeDepartmentNullPipe,
         DepartmentManagerListComponent,
-        DepartmentManagerComponent,
-        DepartmentAddComponent
     ],
     providers: [AuthGuardTokenService],
     bootstrap: [AppComponent],
@@ -71,7 +67,8 @@ const routes:Routes=[
         RegisterComponent,
         NavbarComponent,
         DepartmentListComponent,
-        
+        DepartmentManagerComponent,
+
     ]
 })
 export class AppModule { }

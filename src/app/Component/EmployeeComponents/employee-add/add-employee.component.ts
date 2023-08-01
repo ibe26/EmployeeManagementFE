@@ -45,7 +45,7 @@ export class AddEmployeeComponent {
     }
 
     this.employeeService.post(this.EmployeeForm.value).subscribe(()=>{
-      console.log("hi")
+      alertify.success("Employee successfuly added.");
       this.router.navigate(['/employee-list']);
     });
   }

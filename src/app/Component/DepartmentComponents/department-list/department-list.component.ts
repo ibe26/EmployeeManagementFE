@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Department } from 'src/app/Interface/Department';
+import { Department, DepartmentDTO } from 'src/app/Interface/Department';
 import { DepartmentService } from 'src/app/Service/Department/department.service';
 import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
@@ -42,6 +42,29 @@ export class DepartmentListComponent {
       }
       )
     })
+
+  }
+
+  public onAddClick() {
+    alertify.prompt('Insert Department', 'Enter Department Name',''
+      , (evt:any,departmentName: string) => {
+        if(departmentName.length===0){
+          alertify.error("Please provide a department name");
+          return;
+        }
+        const departmentDto: DepartmentDTO = {
+          departmentName: departmentName
+        };
+        console.log(departmentName)
+        //console.log(departmentDto)
+        this.departmentService.post(departmentDto).subscribe((department) => {
+          this.dataSource.data = [...this.dataSource.data, department];
+          this.table.renderRows();
+          alertify.success(`${departmentName} has been successfuly added!`)
+        })
+
+      }
+      , () => { alertify.error('Cancel') });
 
   }
 
