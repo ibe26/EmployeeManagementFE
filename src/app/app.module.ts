@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { EmployeeComponent } from './Component/EmployeeComponents/employee/employee.component';
 import { EmployeeListComponent } from './Component/EmployeeComponents/employee-list/employee-list.component';
@@ -26,12 +26,18 @@ import { EmployeeDepartmentNullPipe } from './Pipe/employee-department-null.pipe
 import { DepartmentManagerListComponent } from './Component/DepartmentManagerComponents/department-manager-list/department-manager-list.component';
 import { DepartmentManagerComponent } from './Component/DepartmentManagerComponents/department-manager/department-manager.component';
 import { DepartmentListComponent } from './Component/DepartmentComponents/department-list/department-list.component';
+import { ManagerAddComponent } from './Component/DepartmentManagerComponents/manager-add/manager-add.component';
+import { ManagerEditComponent } from './Component/DepartmentManagerComponents/manager-edit/manager-edit.component';
+import { TokenInterceptorService } from './Service/User/token-interceptor.service';
 
 const routes:Routes=[
 {path:'employee-list',component:EmployeeListComponent,canActivate:[AuthGuardTokenService]},
+{path:'',redirectTo:'employee-list',pathMatch:'full'},
 {path:'employee-edit/:id',component:EmployeeEditComponent,canActivate:[AuthGuardTokenService]},
 {path:'employee-add',component:AddEmployeeComponent,canActivate:[AuthGuardTokenService]},
 {path:'department-manager-list',component:DepartmentManagerListComponent,canActivate:[AuthGuardTokenService]},
+{path:'department-manager-add',component:ManagerAddComponent,canActivate:[AuthGuardTokenService]},
+{path:'department-manager-edit/:id',component:ManagerEditComponent,canActivate:[AuthGuardTokenService]},
 {path:'department-list',component:DepartmentListComponent,canActivate:[AuthGuardTokenService]},
 {path:'login',component:LoginComponent},
 {path:'register',component:RegisterComponent},
@@ -50,7 +56,11 @@ const routes:Routes=[
         EmployeeDepartmentNullPipe,
         DepartmentManagerListComponent,
     ],
-    providers: [AuthGuardTokenService],
+    providers: [AuthGuardTokenService,{
+        provide:HTTP_INTERCEPTORS,
+        useClass:TokenInterceptorService,
+        multi:true
+    }],
     bootstrap: [AppComponent],
     exports: [RouterModule],
     imports: [
@@ -68,6 +78,8 @@ const routes:Routes=[
         NavbarComponent,
         DepartmentListComponent,
         DepartmentManagerComponent,
+        ManagerAddComponent,
+        ManagerEditComponent,
 
     ]
 })

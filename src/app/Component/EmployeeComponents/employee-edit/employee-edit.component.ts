@@ -51,7 +51,6 @@ export class EmployeeEditComponent implements OnInit {
 
     this.employeeService.put(this.EmployeeForm.value, this.employeeID).subscribe((httpResponse) => {
       if (httpResponse.status === 200) {
-        console.log(this.EmployeeForm.value)
         this.router.navigate(['/employee-list'])
         return;
       }

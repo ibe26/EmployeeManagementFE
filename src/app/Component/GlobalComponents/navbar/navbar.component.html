@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <img mat-card-image style="width: 7%; height: 7%;" src="https://cdn.webrazzi.com/uploads/2020/06/eitya-19.png">
+
   <button
     class="navbar-toggler"
     type="button"
@@ -14,8 +15,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+        
+        <li class="nav-item" >
         <a
+        *ngIf="guard.canActivate()"
           class="nav-link"
           routerLink="/employee-list"
           routerLinkActive="active"
@@ -25,6 +28,7 @@
       </li>
       <li class="nav-item">
         <a
+        *ngIf="guard.canActivate()"
           class="nav-link"
           routerLink="/department-list"
           routerLinkActive="active"
@@ -34,6 +38,7 @@
       </li>
     <li class="nav-item">
         <a
+        *ngIf="guard.canActivate()"
           class="nav-link"
           routerLink="/department-manager-list"
           routerLinkActive="active"

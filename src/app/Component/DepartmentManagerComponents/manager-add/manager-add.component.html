@@ -1,0 +1,39 @@
+<form [formGroup]="ManagerForm!" (ngSubmit)="onSubmit()">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        type="text"
+        class="inputHeight"
+        matInput
+        formControlName="firstName"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input
+        type="text"
+        class="inputHeight"
+        matInput
+        formControlName="lastName"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>E-Mail</mat-label>
+      <input class="inputHeight" matInput formControlName="email" />
+    </mat-form-field>
+    <div>
+      <app-department-dropdown
+        (DepartmentChange)="onDepartmentChange($event)"
+      ></app-department-dropdown>
+    </div>
+    <button class="mt-1" type="submit" mat-raised-button color="primary">
+      Add Manager
+    </button>
+  </div>
+</form>

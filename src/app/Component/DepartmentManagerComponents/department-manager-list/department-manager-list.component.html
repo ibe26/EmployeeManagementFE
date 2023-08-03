@@ -1,4 +1,8 @@
-<div *ngIf="managers$" class="row">
+<button class="btn btn-outline-primary mb-3" routerLink="/department-manager-add">
+  <i class="fa-solid fa-plus"></i> Add Manager
+</button>
+
+<div *ngIf="managers$" class="row"> 
   <div *ngFor="let manager of managers$ | async" class="shadow-lg col-sm-4 p-3">
     <app-department-manager [manager]="manager"></app-department-manager>
   </div>

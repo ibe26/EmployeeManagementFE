@@ -27,6 +27,6 @@ export class EmployeeComponent{
           location.reload()
         }
       })
-    })
+    }).set({title:"Confirm action"});
   }
 }

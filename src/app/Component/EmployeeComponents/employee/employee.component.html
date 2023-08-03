@@ -6,12 +6,12 @@
     </mat-card-header>
     <img mat-card-image style="max-width: 80%; max-height: 80%; margin-left: auto; margin-right: auto; vertical-align: middle; border-radius: 50%;overflow: hidden;;" src="https://cdn.webrazzi.com/uploads/2020/06/eitya-19.png" alt="Photo of a Shiba Inu">
     <mat-card-content>
-      <div class="row">Email: {{employee.email}}</div>
-      <div class="row">Manager: {{(employee.deptManager!.firstName+" "+employee.deptManager!.lastName)||"Manager hasn't been assigned yet."}}</div>
+      <div class="row ml-1">Email: {{employee.email}}</div>
+      <div class="row ml-1">Manager: {{(employee.deptManager!.firstName+" "+employee.deptManager!.lastName)||"Manager hasn't been assigned yet."}}</div>
 
     </mat-card-content>
     <mat-card-actions>
-      <div class="btn-group" role="group">
+      <div class="btn-group ml-2" role="group">
         <button routerLink="/employee-edit/{{employee.empID}}"   class="btn btn-primary">Edit</button>
         <button (click)="onDeleteClick()" class="btn btn-danger">Delete</button>
       </div>

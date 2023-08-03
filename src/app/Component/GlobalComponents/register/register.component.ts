@@ -17,30 +17,36 @@ import alertify from 'alertifyjs';
 
 })
 export class RegisterComponent {
-  constructor(private userService:UserService
-              ,private formBuilder: FormBuilder
-              , private activatedRoute: ActivatedRoute
-              , private router: Router){}
-  
-  public RegisterForm: FormGroup=this.formBuilder.group({
-    login:['',[Validators.required]],
+  constructor(private userService: UserService
+    , private formBuilder: FormBuilder
+    , private activatedRoute: ActivatedRoute
+    , private router: Router) { }
+
+  public RegisterForm: FormGroup = this.formBuilder.group({
+    login: ['', [Validators.required]],
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    password:['',[Validators.required]]
+    password: ['', [Validators.required]]
   });
 
-  public onSubmit(){
-    if(this.RegisterForm.valid)
-    {
-      this.userService.register(this.RegisterForm.value).subscribe(data=>{
-        if(data.ok){
+  public onSubmit() {
+    if (this.RegisterForm.valid) {
+      this.userService.register(this.RegisterForm.value).subscribe(data => {
+        if (data.ok) {
           alertify.success("Successfully registered!");
           this.router.navigate(['/login']);
         }
-      })
+        alertify.error("User already exists!");
+      }
+        , error => {
+          if (error.status === 400) {
+            alertify.error("User already exists!");
+          }
+
+        })
     }
     else alertify.error("Please provide needed informations.");
 
-   
+
   }
 }

@@ -26,7 +26,7 @@ export class DepartmentManagerComponent {
           location.reload()
         }
       })
-    })
+    }).set({title:"Confirm action"});
   }
 
 }

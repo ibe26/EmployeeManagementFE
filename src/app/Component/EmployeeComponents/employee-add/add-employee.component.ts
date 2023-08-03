@@ -22,8 +22,7 @@ import { DeptManagerDropdownComponent } from '../../DepartmentManagerComponents/
 export class AddEmployeeComponent {
   constructor(private formBuilder: FormBuilder
     , private router: Router
-    , private employeeService: EmployeeService
-    , private filterService:FilterService) { }
+    , private employeeService: EmployeeService) { }
 
   public EmployeeForm: FormGroup=this.formBuilder.group({
     firstName: ['', [Validators.required]],
@@ -34,9 +33,6 @@ export class AddEmployeeComponent {
   });
 
 
-  OnInit(): void {
-  }
-
   public onSubmit(): void {
     console.log(this.EmployeeForm.value)
     if (!this.EmployeeForm.valid) {
@@ -45,7 +41,7 @@ export class AddEmployeeComponent {
     }
 
     this.employeeService.post(this.EmployeeForm.value).subscribe(()=>{
-      alertify.success("Employee successfuly added.");
+      alertify.success("Employee successfully added.");
       this.router.navigate(['/employee-list']);
     });
   }

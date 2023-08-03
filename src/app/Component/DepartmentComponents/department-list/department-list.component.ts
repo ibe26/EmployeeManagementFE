@@ -37,10 +37,10 @@ export class DepartmentListComponent {
         this.departmentService.delete(departmentID).subscribe(() => {
           this.dataSource.data = this.dataSource.data.filter(department => department.departmentID != departmentID);
           this.table.renderRows();
-          alertify.success(`Successfuly deleted ${department.departmentName}`);
+          alertify.success(`Successfully deleted ${department.departmentName}`);
         })
       }
-      )
+      ).set({title:"Confirm action"});
     })
 
   }
@@ -55,16 +55,14 @@ export class DepartmentListComponent {
         const departmentDto: DepartmentDTO = {
           departmentName: departmentName
         };
-        console.log(departmentName)
-        //console.log(departmentDto)
         this.departmentService.post(departmentDto).subscribe((department) => {
           this.dataSource.data = [...this.dataSource.data, department];
           this.table.renderRows();
-          alertify.success(`${departmentName} has been successfuly added!`)
+          alertify.success(`${departmentName} has been successfully added!`)
         })
 
       }
-      , () => { alertify.error('Cancel') });
+      , () => {});
 
   }
 
