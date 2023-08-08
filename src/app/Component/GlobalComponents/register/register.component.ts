@@ -36,7 +36,6 @@ export class RegisterComponent {
           alertify.success("Successfully registered!");
           this.router.navigate(['/login']);
         }
-        alertify.error("User already exists!");
       }
         , error => {
           if (error.status === 400) {

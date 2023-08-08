@@ -43,7 +43,7 @@ export class ManagerAddComponent {
 
     this.deptManagerService.post(this.ManagerForm.value).subscribe(()=>{
       alertify.success("Employee Successfully added.");
-      this.router.navigate(['/employee-list']);
+      this.router.navigate(['/department-manager-list']);
     });
   }
 
